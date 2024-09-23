@@ -88,5 +88,5 @@ Now you know the value of your chosen n as well as the product of m and g. You c
 
 SHARED SECRET NUMBER = {n * mg % group_order}
 
-This shared number can be used, for instance, as a cipher to encrypt some message. Now discuss why some numbers might make better choices than others for the values above.
+This shared number can be used, for instance, as a cipher to encrypt some message. Now discuss why using a finite cyclic group might not be the best choice for this sort of key exchange
 ''')

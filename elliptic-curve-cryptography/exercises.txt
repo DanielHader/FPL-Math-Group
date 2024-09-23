@@ -1,0 +1,37 @@
+Hello FPL Math Group students,
+
+Last meeting we played with the Diffie-Hellman key exchange protocol and saw how 2 people can agree on a shared secret number over an open channel.
+
+Here's an overview assuming 2 people named Alice and Bob are performing the protocol:
+
+A & B: agree publicly on a group order 'G'
+A & B: agree publicly on a group element 'g' in [0, G)
+A: secretly chooses a number 'a' in [0, G)
+B: secretly chooses a number 'b' in [0, G)
+A: publicly announces a*g, that is g+g+g+...+g 'a' times
+B: publicly announces b*g, that is g+g+g+...+g 'b' times
+A: multiplies her 'a' times 'b*g' to get 'a*b*g'
+B: multiplies his 'b' times 'a*g' to get 'a*b*g'
+
+'a*b*g' is the shared secret number.
+
+It's important during the key exchange that the numbers chosen for G, g, a, and b are chosen wisely otherwise it can be easy for an outside listener to crack the code. Try these for yourself by hand:
+
+Suppose G = 17, g = 12, a*g = 5, and b*g = 9, find a*b*g
+Suppose G = 31, g = 15, a*g = 12, and b*g = 15, find a*b*g
+
+Even if the group order is relatively big for computation by hand, a computer program will have no trouble with group orders in the millions or billions. Try to work out some code, or think about how code might be structured, to find the following:
+
+Suppose G = 100001, g = 17234, a*g = 5678, and b*g = 99999, find a*b*g
+Suppose G = 10000001, g = 3475497, a*g = 5010366, b*g = 1387495, find a*b*g
+Suppose G = 100000001, g = 53393626, a*g = 11233402, b*g = 86096030, find a*b*g
+
+A brute force implementation might have struggled for just a second on that last one, but even a laptop can do it within a minute or so.
+
+How about this one, even with a G much to large to brute force, can you find a way to crack the secret:
+
+G = 100000000000000000000000001, g = 394073174505833044706109, a*g = 5911097617587495670591635, b*g = 3546658570552497402354981
+
+What about for the following (the same trick as above won't work here, but note that G is prime):
+G = 818616356828816895417938947079, g = 235802483123030852154768345807, a*g = 553733637467829041397994030098, b*g = 456034383114123313112956023612
+
