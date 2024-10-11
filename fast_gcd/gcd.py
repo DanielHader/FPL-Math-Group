@@ -15,6 +15,13 @@ def gcd_1(a, b):
 def gcd_2(a, b):
     return gcd(a, b)
 
+def my_gcd(a, b):
+    if b == 0:
+        return a
+    while a != 0:
+        a, b = b % a, a
+    return b
+
 def param_gen(input_sizes, samples):
     for input_size in input_sizes:
         for _ in range(samples):
@@ -74,6 +81,8 @@ def benchmark(func, param_gen, input_sizes, random_seed):
 
 def main():
     benchmark(gcd_2, param_gen, [x for x in range(100, 10000, 100)], 42069)
+    benchmark(my_gcd, param_gen, [x for x in range(100, 10000, 100)], 42069)
+    
     
 import time
     
